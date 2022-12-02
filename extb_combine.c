@@ -16,7 +16,7 @@ static int _modinit(void);
 static void _moddeinit(void);
 static int eb_combined(const char *data, struct Client *client_p, struct Channel *chptr, long mode_type);
 
-DECLARE_MODULE_AV1(extb_combine, _modinit, _moddeinit, NULL, NULL, NULL, "$Revision: 2 $");
+DECLARE_MODULE_AV1(extb_combine, _modinit, _moddeinit, NULL, NULL, NULL, "$Revision: 3 $");
 
 static int _modinit(void) {
 	extban_table['b'] = eb_combined;
@@ -67,7 +67,7 @@ static int eb_combined(const char *data, struct Client *client_p, struct Channel
 	char ban1[192];
 	char *ban2;
 
-	if (data == NULL || strstr(data, ",") == NULL || strstr(data, "&m") != NULL) {
+	if (data == NULL || strstr(data, ",") == NULL || strstr(data, "&b") != NULL) {
 		return EXTBAN_INVALID;
 	} else if (strstr(data, ",")) {
 		strcpy(ban1, data); // first banmask
